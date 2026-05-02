@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #05050f;
+  color: #f0f0ff;
+  font-family: Inter, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a14; }
+::-webkit-scrollbar-thumb { background: #1a1a2e; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2a2a3e; }
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(0,212,255,0.2), 0 4px 24px rgba(0,0,0,0.4); }
+  50%       { box-shadow: 0 0 4px rgba(0,212,255,0.05), 0 4px 24px rgba(0,0,0,0.4); }
+}
+
+/* ── Celebration overlay animations ── */
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); opacity: 0.6; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes rankBadgePop {
+  0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  80%  { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes titleSlideUp {
+  from { transform: translateY(32px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes subtitleFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes continuePulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.04); }
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes streakLeft {
+  0%   { width: 0; opacity: 1; }
+  60%  { width: 45%; opacity: 1; }
+  100% { width: 45%; opacity: 0; }
+}
+@keyframes streakRight {
+  0%   { width: 0; opacity: 1; }
+  60%  { width: 45%; opacity: 1; }
+  100% { width: 45%; opacity: 0; }
+}
+
+@keyframes glowRing {
+  0%   { transform: scale(0.6); opacity: 0; }
+  50%  { opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes levelNumCount {
+  from { opacity: 0; transform: scale(1.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Quest detail responsive grid */
+@media (max-width: 700px) {
+  .quest-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Quest page full-screen grid */
+@media (max-width: 860px) {
+  .quest-page-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .quest-page-grid > *:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+}
