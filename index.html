@@ -1,13 +1,117 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Agent 闯关 · LangChain 1.x 全链路实战</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>沉香基因 · 个性化香气推荐</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== 欢迎页 ===== -->
+<div id="page-welcome" class="page active">
+  <div class="welcome-bg">
+    <div class="particle" style="--x:10%;--y:20%;--s:6px;--d:4s"></div>
+    <div class="particle" style="--x:30%;--y:70%;--s:4px;--d:6s"></div>
+    <div class="particle" style="--x:60%;--y:30%;--s:8px;--d:5s"></div>
+    <div class="particle" style="--x:80%;--y:60%;--s:5px;--d:7s"></div>
+    <div class="particle" style="--x:50%;--y:85%;--s:3px;--d:4.5s"></div>
+    <div class="particle" style="--x:20%;--y:45%;--s:7px;--d:5.5s"></div>
+    <div class="particle" style="--x:90%;--y:15%;--s:4px;--d:6.5s"></div>
+    <div class="particle" style="--x:70%;--y:50%;--s:6px;--d:3.5s"></div>
+  </div>
+  <div class="welcome-content">
+    <div class="logo-icon">🌿</div>
+    <h1 class="welcome-title">沉香基因</h1>
+    <p class="welcome-sub">探索属于你的专属香气宇宙</p>
+    <p class="welcome-desc">通过5个维度的感知测试<br/>AI为你精准匹配最懂你的沉香</p>
+    <button class="btn-start" onclick="startQuiz()">开始测试 →</button>
+    <p class="welcome-hint">约 3 分钟 · 完全免费</p>
+  </div>
+</div>
+
+<!-- ===== 问卷页 ===== -->
+<div id="page-quiz" class="page">
+  <!-- 进度条 -->
+  <div class="quiz-header">
+    <button class="btn-back" onclick="goBack()">← 返回</button>
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="progress-text" id="progress-text">1 / 5</span>
+    </div>
+  </div>
+
+  <!-- 问题容器 -->
+  <div class="quiz-body" id="quiz-body">
+    <!-- 动态渲染 -->
+  </div>
+
+  <div class="quiz-footer">
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()" disabled>下一题 →</button>
+  </div>
+</div>
+
+<!-- ===== 结果页 ===== -->
+<div id="page-result" class="page">
+  <div class="result-header">
+    <div class="result-icon" id="result-icon">🌿</div>
+    <h2 class="result-personality" id="result-personality">沉静探索者</h2>
+    <p class="result-desc" id="result-desc">你偏爱内敛而有深度的香气...</p>
+  </div>
+
+  <!-- 雷达图 -->
+  <div class="radar-section">
+    <canvas id="radar-canvas" width="280" height="280"></canvas>
+  </div>
+
+  <!-- 推荐产品 -->
+  <div class="result-section">
+    <h3 class="section-title">✨ 为你推荐</h3>
+    <div class="product-list" id="product-list"></div>
+  </div>
+
+  <!-- 场景搭配 -->
+  <div class="result-section">
+    <h3 class="section-title">🕯️ 最佳使用场景</h3>
+    <div class="scene-tags" id="scene-tags"></div>
+  </div>
+
+  <!-- 香气身份卡 -->
+  <div class="result-section">
+    <h3 class="section-title">🃏 我的香气身份卡</h3>
+    <div class="identity-card" id="identity-card">
+      <div class="card-header">
+        <span class="card-icon" id="card-icon">🌿</span>
+        <div>
+          <div class="card-title" id="card-title">沉香基因报告</div>
+          <div class="card-name" id="card-personality-name">沉静探索者</div>
+        </div>
+      </div>
+      <div class="card-bars" id="card-bars"></div>
+      <div class="card-recommend" id="card-recommend"></div>
+      <div class="card-footer">沉香基因 · AI个性化推荐</div>
+    </div>
+    <button class="btn-share" onclick="shareCard()">📤 分享我的香气身份卡</button>
+  </div>
+
+  <div class="result-actions">
+    <button class="btn-restart" onclick="restart()">🔄 重新测试</button>
+  </div>
+</div>
+
+<!-- ===== 分享弹窗 ===== -->
+<div id="share-modal" class="modal-overlay" onclick="closeShare(event)">
+  <div class="modal-box">
+    <h3>📤 分享你的香气基因</h3>
+    <p>长按图片保存，分享给好友</p>
+    <canvas id="share-canvas" width="400" height="520"></canvas>
+    <button class="btn-close" onclick="closeShareModal()">关闭</button>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
